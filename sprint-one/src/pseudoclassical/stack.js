@@ -1,3 +1,12 @@
 var Stack = function() {
-  // Hey! Copy your code from src/prototypal/stack.js and paste it here
+  this.height = 0;
+  this.storage = {};
 };
+
+var stackMethods = {};
+
+Stack.prototype.push = function(value){this.storage[this.height++] = value;};
+Stack.prototype.pop = function(){if (this.height) {return this.storage[--this.height];}};
+Stack.prototype.size = function(){return this.height;};
+
+var instance = new Stack();
