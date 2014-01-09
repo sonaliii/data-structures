@@ -1,5 +1,11 @@
 var makeStack = function() {
-  // Hey! Copy your code from src/functional/stack.js and paste it here
+  var instance = {height:0,storage:{}};
+
+  return _.extend(instance, stackMethods);
 };
-  
-var stackMethods = {};
+
+var stackMethods = {
+  push:function(value){this.storage[this.height++] = value;},
+  pop:function(){if (this.height) {return this.storage[--this.height];}},
+  size:function(){return this.height;}
+};

@@ -1,5 +1,39 @@
 var makeQueue = function() {
-  // Hey! Copy your code from src/functional-shared/queue.js and paste it here
+
+  // Use an object with numeric keys to store values
+
+    // Implement the methods below
+
+  var instance = Object.create(makeQueue.queueMethods);
+
+  instance.storage = {};
+  instance.first = 0;
+  instance.last = 0;
+  return instance;
+};
+
+makeQueue.queueMethods = {
+  enqueue: function(value) {this.storage[this.last++] = value;},
+  dequeue: function() {if(this.last > this.first) { return this.storage[this.first++];}},
+  size: function() {return this.last - this.first;}
 };
 
 var queueMethods = {};
+
+
+
+
+
+
+
+// var maker = function(value){
+//     var thingToBeMade = Object.create(maker.stuffAllThingsShouldHave);
+//     thingToBeMade.ownValue = value;
+//     return thingToBeMade;
+// };
+
+// maker.stuffAllThingsShouldHave = {};
+// maker.stuffAllThingsShouldHave.shout = function() {console.log(this.ownValue);};
+
+// var newThing = maker(4);
+// newThing.shout();
