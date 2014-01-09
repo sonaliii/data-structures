@@ -12,8 +12,7 @@ var makeQueue = function() {
   return instance;
 };
 
-queueMethods = {};
-queueMethods = {
+var queueMethods = {
   enqueue: function(value) {this.storage[this.last++] = value;},
   dequeue: function() {if(this.last > this.first) { return this.storage[this.first++];}},
   size: function() {return this.last - this.first;}
