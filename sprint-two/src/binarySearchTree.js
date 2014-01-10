@@ -6,7 +6,7 @@ var makeBinarySearchTree = function(value){
   return instance;
 };
 
-binarySearchTreeMethods = {
+var binarySearchTreeMethods = {
 
   insert: function(value) {
     var subTree = makeBinarySearchTree(value);
@@ -21,7 +21,8 @@ binarySearchTreeMethods = {
       if (this.right) {
         this.right.insert(value);
       } else {
-      this.right = subTree;
+        this.right = subTree;
+      }
     }
   },
 
@@ -49,6 +50,18 @@ binarySearchTreeMethods = {
 
   depthFirstLog: function(callback) {
     //loop through entire tree and execute callback function on every value
+    var traverse = function(subTree){
+      callback(subTree.value);
+      if (subTree.left){
+        traverse(subTree.left);
+      }
+      if (subTree.right){
+        traverse(subTree.right);
+      }
+    };
+
+    traverse(this);
+    console.log(arr);
   }
 };
 

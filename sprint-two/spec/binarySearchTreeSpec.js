@@ -35,7 +35,11 @@ describe("binarySearchTree", function() {
     var func = function(value){ array.push(value); }
     binarySearchTree.insert(2);
     binarySearchTree.insert(3);
+    binarySearchTree.insert(6);
+    binarySearchTree.insert(9);
+    binarySearchTree.insert(1);
+    binarySearchTree.insert(-18);
     binarySearchTree.depthFirstLog(func);
-    assert.notStrictEqual(array, [5,2,3]);
+    assert.notStrictEqual(array, [5,2,3, 6, 9, 1, -18]);
   });
 });
