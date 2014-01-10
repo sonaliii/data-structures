@@ -22,15 +22,16 @@ treeMethods.addChild = function(value){
 
 treeMethods.contains = function(target){
 // returns true if the target can be found as the value of the target node OR any descendants
-  var found = false;
+  var found = false
 
   var search = function(treeNode){
     if (treeNode !== undefined && treeNode.value === target){
       found = true;
+      return true;
     }
     if (treeNode.children){
       for (var i = 0; i < treeNode.children.length; i++){
-        search(treeNode.children[i]);
+         search(treeNode.children[i]);
       }
     }
   }
