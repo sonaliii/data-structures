@@ -2,6 +2,7 @@ var makeTree = function(value){
   var newTree = {};
   newTree.value = value;
   newTree.children = undefined;
+  newTree.parent = undefined;
 
   return $.extend(newTree, treeMethods);;
 };
@@ -13,6 +14,7 @@ treeMethods.addChild = function(value){
 //set value as the target of the node
 //add that node as the child of the tree
   var subTree = makeTree(value);
+  subTree.parent = this;
 
   if (this.children === undefined) {
     this.children = [];
@@ -20,9 +22,17 @@ treeMethods.addChild = function(value){
   this.children.push(subTree);
 };
 
+treeMethods.removeFromParent = function(subTree) {
+  for (var i = 0; i < subTree.parent.children.length; i++){
+    if (subTree.parent.children[i] === subTree){
+      subTree.parent.children.splice(i,1);
+    }
+  }
+}
+
 treeMethods.contains = function(target){
 // returns true if the target can be found as the value of the target node OR any descendants
-  var found = false
+  var found = false;
 
   var search = function(treeNode){
     if (treeNode !== undefined && treeNode.value === target){

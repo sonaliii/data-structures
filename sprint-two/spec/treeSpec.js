@@ -19,6 +19,13 @@ describe("tree", function() {
     expect(tree.children[0].value).to.equal(5);
   });
 
+  it("should check that a subtree has a reference to its parent", function(){
+    tree.addChild(5);
+    tree.children[0].addChild(4);
+    expect(tree.children[0].children[0].parent.value).to.equal(5);
+    expect(tree.children[0].children[0].parent).to.equal(tree.children[0]);
+  });
+
   it("should return true for a value that the tree contains", function(){
     tree.addChild(5);
     assert.isTrue(tree.contains(5));
@@ -27,6 +34,13 @@ describe("tree", function() {
   it("should return false for a value that was not added", function(){
     tree.addChild(5);
     assert.isFalse(tree.contains(6));
+  });
+
+  it("should remove a tree from its parent", function() {
+    tree.addChild(5);
+    tree.children[0].addChild(4);
+    tree.removeFromParent(tree.children[0].children[0]);
+    assert.isFalse(tree.contains(4));
   });
 
   it("should be able to add children to a tree's child", function() {
