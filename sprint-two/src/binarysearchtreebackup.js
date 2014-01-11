@@ -1,13 +1,15 @@
 var makeBinarySearchTree = function(value){
-  this.value = value;
-  this.left = undefined;
-  this.right = undefined;
+  var instance = Object.create(binarySearchTreeMethods);
+  instance.value = value;
+  instance.left = undefined;
+  instance.right = undefined;
+  return instance;
 };
 
-makeBinarySearchTree.prototype = {
+var binarySearchTreeMethods = {
 
   insert: function(value) {
-    var subTree = new makeBinarySearchTree(value);
+    var subTree = makeBinarySearchTree(value);
     if (value < this.value){
       if (this.left) {
         this.left.insert(value);

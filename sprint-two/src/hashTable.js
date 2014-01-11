@@ -9,12 +9,9 @@ HashTable.prototype.insert = function(k, v){
     this._storage.set(i,[[k,v]]);
   }
   else {
-    var bucket = [];
-    console.log(this._storage.get(i));
-    for (var j = 0; j < this._storage.get(i).length; j++){
-      bucket.push(this._storage.get(i)[j]);
-    }
-    console.log(bucket);
+    var bucket = this._storage.get(i);
+    var smallArr = [k,v];
+    bucket.push(smallArr);
     this._storage.set(i, bucket);
   }
 };
