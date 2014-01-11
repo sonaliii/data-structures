@@ -57,6 +57,26 @@ makeBinarySearchTree.prototype = {
         traverse(subTree.right);
       }
     };
+    traverse(this);
+  },
+
+  breadthFirstLog: function(callback) {
+    var storage = {};
+    var first = 0;
+    var last = 0;
+    var enqueue = function(value) {storage[last++] = value;};
+    var dequeue = function() {if(last > first) { return storage[first++];}};
+    var size = function() {return last - first;};
+
+    var traverse = function(subTree) {
+      // get the head node and add to queue
+      // get the left then right child to add to queue
+      enqueue(subTree);
+      
+      var first = dequeue();
+
+      callback(first);
+    };
 
     traverse(this);
   }
