@@ -61,7 +61,6 @@ var binarySearchTreeMethods = {
     };
 
     traverse(this);
-    console.log(arr);
   }
 };
 
