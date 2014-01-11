@@ -49,6 +49,20 @@ treeMethods.contains = function(target){
   return found;
 };
 
+treeMethods.traverse = function(callback){
+
+  var search = function(treeNode){
+    if (treeNode !== undefined){
+      callback(treeNode);
+    }
+    if (treeNode.children){
+      for (var i = 0; i < treeNode.children.length; i++){
+         search(treeNode.children[i]);
+      }
+    }
+  }
+  search(this);
+};
 
 
 

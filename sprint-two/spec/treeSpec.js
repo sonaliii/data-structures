@@ -5,7 +5,7 @@ describe("tree", function() {
   var tree;
 
   beforeEach(function() {
-    tree = makeTree();
+    tree = makeTree(5);
   });
 
   it("should have methods named 'addChild' and 'contains', and a property named 'value'", function() {
@@ -47,6 +47,20 @@ describe("tree", function() {
     tree.addChild(5);
     tree.children[0].addChild(6);
     expect(tree.children[0].children[0].value).to.equal(6);
+  });
+
+  it("should traverse and use the callback function on all tree nodes", function() {
+    tree.addChild(5);
+    tree.addChild(2);
+    tree.addChild(3);
+    tree.addChild(4);
+    tree.children[0].addChild(7);
+    tree.children[1].addChild(8);
+    var str = '';
+    tree.traverse(function(node){
+      str += node.value;
+    });
+    expect(str).to.equal('5572834');
   });
 
   it("should correctly detect nested children", function(){
