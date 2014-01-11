@@ -20,6 +20,25 @@ describe("hashTable", function() {
     expect(hashTable.retrieve("Steven")).to.equal("Seagal");
   });
 
+  it("should store values in new hash table when length reaches maximum", function() {
+    hashTable.insert("Steven", "Sagal");
+    hashTable.insert("Steve", "gal");
+    hashTable.insert("Stev", "Sgal");
+    hashTable.insert("Ste", "Seal");
+    hashTable.insert("St", "Se");
+    hashTable.insert("S", "Sea");
+    hashTable.insert("teven", "Seaga");
+    hashTable.insert("even", "Seag");
+
+    expect(hashTable.retrieve("Steven")).to.equal("Sagal");
+  });
+
+  it("should store values in new hash table when length is below 25%", function() {
+    hashTable.insert("Steven", "Sagal");
+
+    expect(hashTable.retrieve("Steven")).to.equal("Sagal");
+  });
+
   it("should not contain values that were not inserted", function() {
     hashTable.insert("Steven", "Spielberg");
     expect(hashTable.retrieve("Steven")).not.to.equal("Seagal");
@@ -39,9 +58,9 @@ describe("hashTable", function() {
     expect(hashTable.retrieve(v1)).to.equal(v1);
     expect(hashTable.retrieve(v2)).to.equal(v2);
   });
-  
+
   // (Extra credit! Remove the extra 'x' when you want the following tests to run)
-  xit("should double in size when needed", function() {
+  it("should double in size when needed", function() {
     for (var i = 0; i < people.length; i++){
       var firstName = people[i][0], lastName = people[i][1];
       hashTable.insert(firstName,lastName);
@@ -49,14 +68,14 @@ describe("hashTable", function() {
     expect(hashTable._limit).to.equal(16);
   });
 
-  xit("should halve in size when needed", function() {
+  it("should halve in size when needed", function() {
     for (var i = 0; i < people.length; i++){
       var firstName = people[i][0], lastName = people[i][1];
       hashTable.insert(firstName,lastName);
     }
     expect(hashTable._limit).to.equal(16);
     hashTable.remove("George");
-    hashTable.remove("Dr."); 
+    hashTable.remove("Dr.");
     hashTable.remove("Steven");
     hashTable.remove("John");
     hashTable.remove("Mr.");
