@@ -75,6 +75,7 @@ describe("hashTable", function() {
     }
     expect(hashTable._limit).to.equal(16);
     hashTable.remove("George");
+    console.log("remove")
     hashTable.remove("Dr.");
     hashTable.remove("Steven");
     hashTable.remove("John");
